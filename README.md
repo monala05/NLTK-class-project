@@ -8,4 +8,6 @@ This project uses Python's Natural language toolkit to parse books from the gute
 
 To run project nltk and its corpora must be downloaded during its first run, afterwards any mystery file can be added and it will try to guess which one of the authors in our current corpora wrote the passage or book that your are giving it.
 
+In order for the project to take a guess at your mystery file, you can add the txt files in the repo to the gutenburgs corpora folder. The programm will then prompt you to simply write the name of the file.  
+
 This was my first programming project, and my first python project. I learned how to make sure our methods worked with each other, and it was my first time applying the basics of computer programming to anything bigger than a method. This project is based heavily in linguistics, and I learned much about how we can use programs to parse human speech.
