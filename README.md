@@ -1,5 +1,7 @@
 # NLTK-class-project
 
+![picture](NLTK.png)
+
 A class project done along side two other students, the idea behind this project is the program wille calculate certain parameters from info that is passed into it. Using those parameters it will try and guess the author of a book that we give it. The project uses things such as average sentence length, and lexical diversity to try and guess the author. The project also uses Python's Natural language toolkit to parse books from the Gutenburg project.
 
 To run the project, NLTK and its corpora must be downloaded during its first run. Afterwards any mystery novel written by one of the authors in the corpora can be added and it will try to guess which one of the authors wrote the passage or book that you are giving it.
