@@ -2,9 +2,8 @@
 """
 Created on Mon Nov 12 19:21:58 2018
 
-final .py file where students got to group up and write the methods necessary
-to get the program running
- 
+final .py file where students got to group up and write the methods necessary to get the program running
+
 @author: weissr
 """
 
@@ -25,10 +24,10 @@ def avg_word_len(words):
     for word in words:
         num_chars += len(word)
     return num_chars / len(words)
-    
+
 def lexical_div(words):
     n_vocab = len(set(words))
-    l_div = n_vocab / len(words) 
+    l_div = n_vocab / len(words)
     return l_div
 
 def n_hapax(words):
@@ -66,12 +65,12 @@ def compute_signature(words, sentences, author):
     sig.append(avg_sent_len(words, sentences))
     sig.append(avg_sent_complexity(words, sentences))
     return sig
-    
-    
+
+
 
 def compare_signatures(sig1, sig2, weights):
-    '''Return a non-negative real number indicating the similarity of two 
-    linguistic signatures. The smaller the number the more similar the 
+    '''Return a non-negative real number indicating the similarity of two
+    linguistic signatures. The smaller the number the more similar the
     signatures. Zero indicates identical signatures.
     sig1 and sig2 are 6 element lists with the following elements
     0  : author name (a string)
@@ -141,25 +140,25 @@ def write_signatures(sig_list, o_filename):
             f_out.write(str(item) + ' ')
         f_out.write('\n')
     f_out.close()
-   
+
 def read_signatures(in_filename):
     f_in = open(in_filename, 'r')
     infile = f_in.readlines()
     for line in infile:
         print(line)
     f_in.close()
-    
-    
+
+
 def read_text(in_filename):
     try:
         path = 'corpora/gutenberg/' + in_filename
         file = nltk.data.find(path)
         f_in = open(file, 'r', encoding='utf-8')
         raw = f_in.read()
-        f_in.close()        
+        f_in.close()
     except:
         print('failed to open', in_filename)
-        return '' 
+        return ''
     return raw
 
 
@@ -176,7 +175,7 @@ def print_sig_table(sig_list):
     print('\n{:>25} {:>12} {:>12} {:>12} {:>12} {:>12}\n'.format('File Name:', 'word_len:', 'lex_div:', 'hap_rat:', 'sent_len:', 'sent_comp:'))
     for sig in sig_list:
         print('{:>25} {:>12.4f} {:>12.4f} {:>12.4f} {:>12.4f} {:>12.4f}'.format(sig[0], sig[1], sig[2], sig[3], sig[4], sig[5]))
-    
+
 def print_scores(scores_lst, myst_num):
     for file in scores_lst:
         if file[0][0] == myst_num:
@@ -196,16 +195,16 @@ if __name__ == '__main__':
     fileids = gutenberg.fileids()
     print('\n\nCalculating Table of Signatures...')
     print('\n{:>25} {:>12} {:>12} {:>12} {:>12} {:>12}\n'.format('File Name:', 'word_len:', 'lex_div:', 'hap_rat:', 'sent_len:', 'sent_comp:'))
-    for fid in fileids: 
+    for fid in fileids:
         # compute features, make a list of features
         words = gutenberg.words(fid)
         sents = gutenberg.sents(fid)
         sig = compute_signature(words, sents, fid)
         sig_list.append(sig)
         print('{:>25} {:>12.4f} {:>12.4f} {:>12.4f} {:>12.4f} {:>12.4f}'.format(sig[0], sig[1], sig[2], sig[3], sig[4], sig[5]))
-        
+
     write_signatures(sig_list, 'out.txt')
-    
+
     n_files = int(input('Enter Number of Mystery Files: '))
     m_sig_list = []
     for f in range(n_files):
@@ -216,13 +215,10 @@ if __name__ == '__main__':
         m_sig = compute_signature(m_words, m_sents, filename)
         m_sig_list.append(m_sig)
         print('\nFile added to list of Mystery Files \n')
-       
+
     get_signatures(sig_list, m_sig_list, weights)
-    
+
     for i in range(n_files):
         file = input('Enter a Mystery File to Compare Signatures: ')
         print_scores(scores_lst, file)
         find_lowest(scores_lst, file)
-        
-    
-        
